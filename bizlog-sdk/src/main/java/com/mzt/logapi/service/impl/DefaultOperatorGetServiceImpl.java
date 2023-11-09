@@ -15,6 +15,7 @@ public class DefaultOperatorGetServiceImpl implements IOperatorGetService {
         // return Optional.ofNullable(UserUtils.getUser())
         //                .map(a -> new Operator(a.getName(), a.getLogin()))
         //                .orElseThrow(()->new IllegalArgumentException("user is null"));
+        //todo houjinxiang 这个地方设置UserContext的内容
         Operator operator = new Operator();
         operator.setOperatorId("111");
         return operator;

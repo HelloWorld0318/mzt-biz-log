@@ -17,6 +17,8 @@ import java.util.regex.Pattern;
  * DATE 3:32 PM
  * 解析需要存储的日志里面的SpeEL表达式
  *
+ *
+ * 解析核心类：LogRecordValueParser 里面封装了自定义函数和 SpEL 解析类 LogRecordExpressionEvaluator。
  * @author mzt.
  */
 public class LogRecordValueParser implements BeanFactoryAware {
@@ -52,6 +54,7 @@ public class LogRecordValueParser implements BeanFactoryAware {
     public Map<String, String> processTemplate(Collection<String> templates, MethodExecuteResult methodExecuteResult,
                                                Map<String, String> beforeFunctionNameAndReturnMap) {
         Map<String, String> expressionValues = new HashMap<>();
+        //在 LogRecordValueParser 中创建了一个 EvaluationContext，用来给 SpEL 解析方法参数和 Context 中的变量
         EvaluationContext evaluationContext = expressionEvaluator.createEvaluationContext(methodExecuteResult.getMethod(),
                 methodExecuteResult.getArgs(), methodExecuteResult.getTargetClass(), methodExecuteResult.getResult(),
                 methodExecuteResult.getErrorMsg(), beanFactory);

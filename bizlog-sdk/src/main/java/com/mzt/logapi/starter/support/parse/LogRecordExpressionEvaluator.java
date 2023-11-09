@@ -15,6 +15,11 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * DATE 4:38 PM
  *
+ * LogRecordExpressionEvaluator继承自CachedExpressionEvaluator类，这个类里面有两个 Map，
+ * 一个是expressionCache一个是targetMethodCache。在上面的例子中可以看到，SpEL 会解析成一个 Expression 表达式，
+ * 然后根据传入的 Object 获取到对应的值，所以 expressionCache 是为了缓存方法、表达式和 SpEL 的 Expression 的对应关系，
+ * 让方法注解上添加的 SpEL 表达式只解析一次。 下面的 targetMethodCache 是为了缓存传入到 Expression 表达式的 Object。
+ * 核心的解析逻辑是上面最后一行代码。
  * @author mzt.
  */
 public class LogRecordExpressionEvaluator extends CachedExpressionEvaluator {
@@ -23,6 +28,8 @@ public class LogRecordExpressionEvaluator extends CachedExpressionEvaluator {
     private final Map<ExpressionKey, Expression> expressionCache = new ConcurrentHashMap<>(64);
 
     public Object parseExpression(String conditionExpression, AnnotatedElementKey methodKey, EvaluationContext evalContext) {
+        //getExpression 方法会从 expressionCache 中获取到 @LogRecordAnnotation 注解上的表达式的解析 Expression 的实例，
+        // 然后调用 getValue 方法，getValue 传入一个 evalContext 就是类似上面例子中的 order 对象。其中 Context 的实现将会在下文介绍。
         return getExpression(this.expressionCache, methodKey, conditionExpression).getValue(evalContext, Object.class);
     }
 

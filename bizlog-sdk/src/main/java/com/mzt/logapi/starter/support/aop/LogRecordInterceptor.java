@@ -50,7 +50,9 @@ public class LogRecordInterceptor extends LogRecordValueParser implements Method
 
     @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
+        //切面的增强逻辑主要代码如下：
         Method method = invocation.getMethod();
+        //记录日志
         return execute(invocation, invocation.getThis(), method, invocation.getArguments());
     }
 
@@ -70,6 +72,7 @@ public class LogRecordInterceptor extends LogRecordValueParser implements Method
         try {
             operations = logRecordOperationSource.computeLogRecordOperations(method, targetClass);
             List<String> spElTemplates = getBeforeExecuteFunctionTemplate(operations);
+            //业务逻辑执行前的自定义函数解析
             functionNameAndReturnMap = processBeforeExecuteFunctionTemplate(spElTemplates, targetClass, method, args);
         } catch (Exception e) {
             log.error("log record parse before function exception", e);

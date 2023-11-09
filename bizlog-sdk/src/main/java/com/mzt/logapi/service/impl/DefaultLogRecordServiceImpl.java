@@ -23,6 +23,7 @@ public class DefaultLogRecordServiceImpl implements ILogRecordService {
         log.info("【logRecord】log={}", logRecord);
         //throw new RuntimeException("sss");
 //        logRecordMapper.insertSelective(logRecord);
+        //todo houjinxiang 这个地方设置日志保存的地方
     }
 
     @Override

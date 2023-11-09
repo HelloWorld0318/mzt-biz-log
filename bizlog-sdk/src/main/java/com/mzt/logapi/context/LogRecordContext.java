@@ -12,8 +12,11 @@ import java.util.Map;
  * create on 2021/2/9 2:22 下午
  */
 public class LogRecordContext {
-
+    //这个类里面通过一个 ThreadLocal 变量保持了一个栈，栈里面是个 Map，Map 对应了变量的名称和变量的值。
     private static final InheritableThreadLocal<Deque<Map<String, Object>>> VARIABLE_MAP_STACK = new InheritableThreadLocal<>();
+    //上面使用了 InheritableThreadLocal，所以在线程池的场景下使用 LogRecordContext 会出现问题，
+    // 如果支持线程池可以使用阿里巴巴开源的 TTL 框架。那这里为什么不直接设置一个 ThreadLocal<Map<String, Object>> 对象，
+    // 而是要设置一个 Stack 结构呢？我们看一下这么做的原因是什么。
 
     private static final InheritableThreadLocal<Map<String, Object>> GLOBAL_VARIABLE_MAP = new InheritableThreadLocal<>();
 

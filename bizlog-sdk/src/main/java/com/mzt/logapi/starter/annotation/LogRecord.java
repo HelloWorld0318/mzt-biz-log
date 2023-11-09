@@ -13,7 +13,7 @@ import java.lang.annotation.*;
 @Documented
 public @interface LogRecord {
     /**
-     * @return 方法执行成功后的日志模版
+     * @return 方法执行成功后的日志模版，必填
      */
     String success();
 
@@ -38,7 +38,7 @@ public @interface LogRecord {
     String subType() default "";
 
     /**
-     * @return 日志绑定的业务标识
+     * @return 日志绑定的业务标识，必填
      */
     String bizNo();
 
