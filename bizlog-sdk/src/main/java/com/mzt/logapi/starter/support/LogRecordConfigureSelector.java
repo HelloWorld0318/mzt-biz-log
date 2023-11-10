@@ -9,8 +9,10 @@ import com.mzt.logapi.starter.annotation.EnableLogRecord;
 import com.mzt.logapi.starter.configuration.LogRecordProxyAutoConfiguration;
 
 /**
- * DATE 6:57 PM
  *
+ * 在 LogRecordConfigureSelector 类中暴露了 LogRecordProxyAutoConfiguration 类。
+ *
+ * DATE 6:57 PM
  * @author mzt.
  */
 public class LogRecordConfigureSelector extends AdviceModeImportSelector<EnableLogRecord> {

@@ -8,6 +8,7 @@ import org.springframework.core.Ordered;
 import java.lang.annotation.*;
 
 /**
+ * Starter逻辑封装
  * DATE 6:28 PM
  *
  * @author mzt.

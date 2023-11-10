@@ -2,6 +2,10 @@ package com.mzt.logapi.service;
 
 public interface IParseFunction {
 
+    /**
+     * executeBefore 函数代表了自定义函数是否在业务代码执行之前解析，上面提到的查询修改之前的内容。
+     * @return
+     */
     default boolean executeBefore() {
         return false;
     }

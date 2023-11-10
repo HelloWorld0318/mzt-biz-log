@@ -26,6 +26,9 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
+ * 这个类继承 ImportAware是为了拿到 EnableLogRecord上的租户属性，这个类使用变量logRecordAdvisor和logRecordInterceptor装配了AOP，
+ * 同时把自定义函数注入到了 logRecordAdvisor 中。
+ *
  * @author muzhantong
  * create on 2020/6/12 10:41 上午
  */

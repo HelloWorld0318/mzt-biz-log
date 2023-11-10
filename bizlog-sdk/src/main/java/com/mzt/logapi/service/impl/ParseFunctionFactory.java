@@ -10,6 +10,7 @@ import java.util.Map;
 
 
 /**
+ * 把所有的 IParseFunction 注入到函数工厂中。
  * @author muzhantong
  * create on 2021/2/6 9:45 上午
  */

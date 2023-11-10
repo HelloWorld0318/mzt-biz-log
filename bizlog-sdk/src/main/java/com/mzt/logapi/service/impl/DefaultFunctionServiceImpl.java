@@ -5,6 +5,7 @@ import com.mzt.logapi.service.IFunctionService;
 import com.mzt.logapi.service.IParseFunction;
 
 /**
+ * 根据传入的函数名称 functionName 找到对应的 IParseFunction，然后把参数传入到 IParseFunction 的 apply 方法上最后返回函数的值。
  * @author muzhantong
  * create on 2021/2/1 5:18 下午
  */
