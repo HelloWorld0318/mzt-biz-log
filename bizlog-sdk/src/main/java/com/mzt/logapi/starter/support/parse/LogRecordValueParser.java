@@ -17,8 +17,7 @@ import java.util.regex.Pattern;
  * DATE 3:32 PM
  * 解析需要存储的日志里面的SpeEL表达式
  *
- *
- * 解析核心类：LogRecordValueParser 里面封装了自定义函数和 SpEL 解析类 LogRecordExpressionEvaluator。
+ * 解析核心类：LogRecordValueParser里面封装了自定义函数和SpEL解析类LogRecordExpressionEvaluator。
  * @author mzt.
  */
 public class LogRecordValueParser implements BeanFactoryAware {
